@@ -3,13 +3,21 @@
 Estimate: 4-5h  
 Time spent pre-planning, architecture, documentation: 1h  
 Time spent building infra: 1h  
-Time spent building API: 2.5h
-Time spent testing: .5h
+Time spent building API: 2.5h  
+Time spent testing: .5h  
 Time spent total: 5h
 
 `primarily evaluating your engineering judgment, solution design, coding practices, and
 decision-making process`  
 Used some existing code I had for initial setup of CDK infra, my decision making for infra is explained below.
+
+### Example API: https://pki2k7yf25.execute-api.us-east-1.amazonaws.com
+
+GET /locations - List all branch locations.
+
+```
+curl 'https://pki2k7yf25.execute-api.us-east-1.amazonaws.com/locations'
+```
 
 ## Tools used
 
@@ -22,6 +30,7 @@ Typescript, Jest
 ## AI Usage
 
 - Search nominatim API documentation for required auth/headers - requires User-Agent
+- Checked some test cases
 
 ## Requirements
 
@@ -40,7 +49,7 @@ RESTful API.
 
 Deployed manually throuch CDK  
 Lambda - simple query computes  
-DynamoDB - NoSQL for this simple demo, faster setup when accounting for time constraint
+DynamoDB - NoSQL for this simple demo, faster setup when accounting for time constraint  
 API Gateway - connect lambda to public internet
 
 ### REST endpoints
@@ -50,7 +59,7 @@ API Gateway - connect lambda to public internet
 - GET /locations/{locationId} - Get an existing location record by Location ID.
 - GET /locations - List all branch locations.
 
-TBD API Gateway endpoint
+API Gateway endpoint: https://pki2k7yf25.execute-api.us-east-1.amazonaws.com
 
 ### Schema
 
@@ -63,7 +72,7 @@ our logistics side of the business.
 
 ### Assumptions
 
-client will set location ID
+client will set location ID  
 Grab the first item available from nominatim (can happen when address is not specific enough)
 
 ## Trade-offs
